@@ -4,7 +4,6 @@ import InfoIcon from './assets/InfoIcon'
 import MinusIcon from './assets/MinusIcon'
 import PlusIcon from './assets/PlusIcon'
 import CloseIcon from './assets/CloseIcon'
-import LoadingBar from './assets/LoadingBar'
 import styles from './Css'
 import './App.css'
 
@@ -41,7 +40,6 @@ export default function Main() {
     const [selectedBonusCalc, setSelectedBonusCalc] = React.useState(3)
     const [modalStatus, setModalStatus] = React.useState(false)
     const [route, setRoute] = React.useState(0)
-    const [isLoading, setIsLoading] = React.useState(false)
     const [totalPrice, setTotalPrice] = React.useState(0)
     const [checkoutList, setCheckoutList] = React.useState([])
     const [checkoutId, setCheckoutId] = React.useState("")
@@ -145,18 +143,18 @@ export default function Main() {
             upgradePrice
         setTotalPrice(total.toFixed(2))
         var newArray = []
-        if (USBCUSBC != 0)
+        if (USBCUSBC !== 0)
             newArray.push({
                 variantId: products["usbCtoUsb"].variants.edges[0].node.id,
                 quantity: USBCUSBC,
             })
-        if (USBCLGT != 0)
+        if (USBCLGT !== 0)
             newArray.push({
                 variantId:
                     products["usbCtoLightning"].variants.edges[0].node.id,
                 quantity: USBCLGT,
             })
-        if (BONUSLGT != 0)
+        if (BONUSLGT !== 0)
             newArray.push({
                 variantId:
                     products["switchToLightning"].variants.edges[0].node.id,
@@ -169,13 +167,13 @@ export default function Main() {
                         .node.id,
                 quantity: bonusCount,
             })
-        if (ADUSBA != 0)
+        if (ADUSBA !== 0)
             newArray.push({
                 variantId:
                     products["usbAAdapter4pack"].variants.edges[0].node.id,
                 quantity: ADUSBA,
             })
-        if (ADMICRO != 0)
+        if (ADMICRO !== 0)
             newArray.push({
                 variantId:
                     products["microUsbAdapter4pack"].variants.edges[0].node.id,
@@ -195,7 +193,6 @@ export default function Main() {
             })
 
         setCheckoutList(newArray)
-        setIsLoading(true)
         fetch(API_URL + "shopifyAPI/createCheckOut", {
             method: "POST",
             body: JSON.stringify({
@@ -206,15 +203,12 @@ export default function Main() {
         })
             .then((res) => res.json())
             .then((json) => {
-                setIsLoading(false)
                 setCheckoutId(json.id)
                 setRoute(2)
             })
-            .catch((err) => setIsLoading(false))
     }
 
     const clickCheckout = () => {
-        setIsLoading(true)
         fetch(API_URL + "shopifyAPI/updateCheckOut", {
             method: "POST",
             body: JSON.stringify({ id: checkoutId, lineItems: checkoutList }),
@@ -222,21 +216,19 @@ export default function Main() {
         })
             .then((res) => res.json())
             .then((json) => {
-                setIsLoading(false)
                 window.location.href = json.webUrl
             })
-            .catch((err) => setIsLoading(false))
     }
 
     return (
         <div style={styles.App} className="main">
-            {/* <LoadingBar isLoading={isLoading} /> */}
-            {route == 0 ? (
+            {route === 0 ? (
                 <div style={styles.firstCard}>
                     <div>
                         <img
                             style={styles.headerImage}
                             src={API_URL + "image/first.png"}
+                            alt="first"
                         />
                     </div>
                     <div style={styles.bodyMargin}>
@@ -304,13 +296,14 @@ export default function Main() {
                 ""
             )}
 
-            {route == 1 && products["usbCtoUsb"] ? (
+            {route === 1 && products["usbCtoUsb"] ? (
                 <>
                     <div style={styles.secondCard}>
                         <div style={styles.relative}>
                             <img
                                 style={styles.headerImage}
                                 src={API_URL + "image/more.png"}
+                                alt="more"
                             />
                         </div>
                         <div style={styles.bodyMargin}>
@@ -349,6 +342,7 @@ export default function Main() {
                                     <img
                                         src={API_URL + "image/usbc_usbc.png"}
                                         style={styles.image}
+                                        alt="usbc_usbc"
                                     />
                                 </div>
                                 <div style={styles.padding15}>
@@ -425,6 +419,7 @@ export default function Main() {
                                             API_URL + "image/lightning_usbc.png"
                                         }
                                         style={styles.image}
+                                        alt="lightning_usbc"
                                     />
                                 </div>
                                 <div style={styles.padding15}>
@@ -559,6 +554,7 @@ export default function Main() {
                                             "image/switch_lightning.png"
                                         }
                                         style={styles.image}
+                                        alt="switch_lightning"
                                     />
                                 </div>
                                 <div style={styles.padding15}>
@@ -634,6 +630,7 @@ export default function Main() {
                                     <img
                                         src={API_URL + "image/upgrade.png"}
                                         style={styles.image}
+                                        alt="upgrade"
                                     />
                                 </div>
                                 <div style={styles.padding15}>
@@ -713,6 +710,7 @@ export default function Main() {
                             <img
                                 src={API_URL + "image/usba_adapters.png"}
                                 style={styles.image}
+                                alt="usba_adapters"
                             />
                         </div>
                         <div style={styles.padding15}>
@@ -788,6 +786,7 @@ export default function Main() {
                             <img
                                 src={API_URL + "image/micro_adapters.png"}
                                 style={styles.image}
+                                alt="micro_adapters"
                             />
                         </div>
                         <div style={styles.padding15}>
@@ -865,7 +864,7 @@ export default function Main() {
                 ""
             )}
 
-            {route == 2 ? (
+            {route === 2 ? (
                 <div>
                     <div style={styles.summaryCard}>
                         <div style={styles.summaryBody}>
