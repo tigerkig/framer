@@ -4,7 +4,7 @@ import InfoIcon from './assets/InfoIcon'
 import MinusIcon from './assets/MinusIcon'
 import PlusIcon from './assets/PlusIcon'
 import CloseIcon from './assets/CloseIcon'
-import styles from './Css'
+import styles from './Styles'
 import './App.css'
 
 const OFFER_STRING = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
