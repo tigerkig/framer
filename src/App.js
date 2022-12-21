@@ -626,10 +626,10 @@ export default function Main() {
                                         : "customBorder"
                                 }
                             >
-                                <div>
+                                <div style={styles.upgradeImageDiv}>
                                     <img
-                                        src={API_URL + "image/upgrade.png"}
-                                        style={styles.image}
+                                        src={API_URL + "image/upgrade_1.png"}
+                                        style={styles.upgradeImage}
                                         alt="upgrade"
                                     />
                                 </div>
@@ -641,7 +641,7 @@ export default function Main() {
                                                 "customGoldPlatedUsbAAdapter"
                                             ].variants.edges[0].node.price * 1
                                         ).toFixed(0)}{" "}
-                                        per cable
+                                        per FREE cable
                                     </div>
                                     <div style={styles.fontSize27}>
                                         <strong>

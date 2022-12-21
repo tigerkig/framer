@@ -392,5 +392,15 @@ export default {
     },
     mb5: {
         marginBottom: "10px"
-    }
+    },
+    upgradeImage: {
+        width: '140px',
+        position: 'absolute',
+        top: 'calc(50% - 150px)',
+        right: 0,
+    },
+    upgradeImageDiv: {
+        width: '100px',
+        position: 'relative',
+    },
 }
