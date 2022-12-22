@@ -142,26 +142,31 @@ export default function Main() {
             products["microUsbAdapter4pack"].variants.edges[0].node.price +
             upgradePrice
         setTotalPrice(total.toFixed(2))
+
         var newArray = []
         if (USBCUSBC !== 0)
             newArray.push({
+                type: "usbCtoUsb",
                 variantId: products["usbCtoUsb"].variants.edges[0].node.id,
                 quantity: USBCUSBC,
             })
         if (USBCLGT !== 0)
             newArray.push({
+                type: "usbCtoLightning",
                 variantId:
                     products["usbCtoLightning"].variants.edges[0].node.id,
                 quantity: USBCLGT,
             })
         if (BONUSLGT !== 0)
             newArray.push({
+                type: "switchToLightning",
                 variantId:
                     products["switchToLightning"].variants.edges[0].node.id,
                 quantity: BONUSLGT,
             })
         if (UPGRADE === true)
             newArray.push({
+                type: "customGoldPlatedUsbAAdapter",
                 variantId:
                     products["customGoldPlatedUsbAAdapter"].variants.edges[0]
                         .node.id,
@@ -169,24 +174,28 @@ export default function Main() {
             })
         if (ADUSBA !== 0)
             newArray.push({
+                type: "usbAAdapter4pack",
                 variantId:
                     products["usbAAdapter4pack"].variants.edges[0].node.id,
                 quantity: ADUSBA,
             })
         if (ADMICRO !== 0)
             newArray.push({
+                type: "microUsbAdapter4pack",
                 variantId:
                     products["microUsbAdapter4pack"].variants.edges[0].node.id,
                 quantity: ADMICRO,
             })
         if (newArray.length === 0)
             newArray.push({
+                type: "freeBonusLuxUsbC",
                 variantId:
                     products["freeBonusLuxUsbC"].variants.edges[0].node.id,
                 quantity: 1,
             })
         else
             newArray.push({
+                type: "freeBonusLuxUsbC",
                 variantId:
                     products["freeBonusLuxUsbC"].variants.edges[0].node.id,
                 quantity: BONUSUSB + BONUSLGT,
