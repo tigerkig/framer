@@ -96,6 +96,7 @@ export default function Main() {
                 count = BONUSLGT - 1
                 setBONUSLGT(BONUSLGT - 1)
             } else {
+                count = 0
                 setBONUSLGT(0)
             }
         } else {
@@ -103,10 +104,12 @@ export default function Main() {
                 count = BONUSLGT + 1
                 setBONUSLGT(BONUSLGT + 1)
             } else {
+                count = bonusCount
                 setBONUSLGT(bonusCount)
             }
         }
         setBONUSUSB(calc - count)
+        console.log(BONUSLGT, bonusCount, calc, BONUSUSB)
     }
 
     const clickViewSummary = () => {
