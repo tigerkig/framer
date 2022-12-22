@@ -205,8 +205,8 @@ export default function Main() {
         fetch(API_URL + "shopifyAPI/createCheckOut", {
             method: "POST",
             body: JSON.stringify({
-                id: newArray[0].variantId,
-                quantity: newArray[0].quantity,
+                id: products["freeBonusLuxUsbC"].variants.edges[0].node.id,
+                quantity: 1,
             }),
             headers: { "Content-Type": "application/json" },
         })
